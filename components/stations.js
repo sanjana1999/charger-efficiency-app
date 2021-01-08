@@ -5,10 +5,13 @@ import {
     View,
     Alert,
     Platform,
-    PermissionsAndroid
+    PermissionsAndroid,
+    NativeModules
+
   } from 'react-native';
 
 import MapView , { PROVIDER_GOOGLE , Marker} from 'react-native-maps';
+import MapViewDirections from 'react-native-maps-directions';
 import Geolocation from "react-native-geolocation-service";
 class stations extends Component {
     constructor(props) {
@@ -41,6 +44,8 @@ class stations extends Component {
                   latitude: position.coords.latitude,
                   longitude: position.coords.longitude
                 })
+              },()=>{
+                console.log(this.state.coordinates)
               });
             },
             error => {
@@ -73,6 +78,19 @@ class stations extends Component {
                     longitude: this.state.longitude,
                     }}>
                 </Marker>
+                <MapViewDirections
+              origin={{
+                'latitude': this.state.latitude,
+                'longitude': this.state.longitude
+              }}
+              destination={{
+                'latitude': 12.909477,
+                'longitude': 77.566833
+              }}
+              strokeWidth={5}
+              strokeColor={"#2d8cea"}
+              apikey={'AIzaSyDYNN6QNgewlmliHGBQotG76fy0--tRtsM'}
+            />
             </MapView>
             </View>
             </>
@@ -80,16 +98,4 @@ class stations extends Component {
     };
 }
 
-const styles = StyleSheet.create({
-    container:{
-        alignItems :"center",
-        justifyContent : "center"
-    },
-    icons :{
-      width : 50,
-      height: 50,
-      marginTop : -20
-    },
-  });
- 
 export default stations;

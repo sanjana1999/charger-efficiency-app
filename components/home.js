@@ -11,25 +11,31 @@ import {
   StyleSheet,
   View,
   Text,
-  StatusBar,
   Image,
   Dimensions,
 } from 'react-native';
-import SwipeUpDown from 'react-native-swipe-up-down';
+import SwipeUpDown from "react-native-swipe-up-down";
 import Details from "./details";
 import Menu from "./menu"
 
 class home extends Component {
+  constructor(){
+    super();
+    this.state={
+      bluetooth : false,
+      battery : 70
+    }
+  }
+  
   render(){
   return (
-    <>
-      
+    <>      
       <View style= {styles.container}>
-          <Image source={require('../assets/images/battery.png')} style={styles.battery}/>
-          <Text style={styles.value}>Battery = 10% </Text>
+          <Image source={require('../assets/images/battery70.jpg')} />
+          <Text style={styles.value}>{this.state.bluetooth ? Battery = this.state.battery : "Connect bluetooth"} </Text> 
           <SwipeUpDown        
               itemMini={<Menu />} // Pass props component when collapsed
-              itemFull={<Details navigation ={this.props.navigation} />} // Pass props component when show full
+              itemFull={<Details navigation ={this.props.navigation} user={this.props.route.params.user}/>} // Pass props component when show full
               onShowMini={() => console.log('mini')}
               onShowFull={() => console.log('full')}
               onMoveDown={() => console.log('down')}
@@ -48,10 +54,6 @@ const styles = StyleSheet.create({
     height : Dimensions.get('window').height,
     justifyContent : 'center',
     alignItems : "center"
-  },
-  battery :{
-    width : 200,
-    height: 200
   },
   value :{
     width: 100,

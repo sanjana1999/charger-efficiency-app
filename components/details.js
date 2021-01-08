@@ -42,7 +42,7 @@ class details extends Component {
             <View style={styles.container}>
             <FlatList
                 data={[
-                {key: 'Type : Lithium'},
+                {key: 'Type : '+this.props.user.battery},
                 {key: 'Charger connected : N0'},
                 {key: 'Distance : 5 kms'},
                 {key: 'Efficiency : 96%'},

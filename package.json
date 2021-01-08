@@ -14,15 +14,17 @@
     "@react-native-picker/picker": "^1.9.4",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "axios": "^0.21.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-bluetooth-serial": "^1.0.0-rc1",
     "react-native-geolocation-service": "^5.1.1",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-maps": "^0.27.1",
+    "react-native-maps-directions": "^1.8.0",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.15.0",
-    "react-native-swipe-up-down": "^1.0.7",
-    "tcomb-form-native": "^0.6.20"
+    "react-native-swipe-up-down": "^1.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

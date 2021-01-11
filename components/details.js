@@ -43,16 +43,16 @@ class details extends Component {
             <FlatList
                 data={[
                 {key: 'Type : '+this.props.user.battery},
-                {key: 'Charger connected : N0'},
-                {key: 'Distance : 5 kms'},
-                {key: 'Efficiency : 96%'},
-                {key: 'Durability : 15 yrs'},
+                {key: 'Charger connected : No'},
+                {key: 'Distance : '+ this.props.details.distance + " kms"},
+                {key: 'Efficiency : '+ ((this.props.user.dischargeTime/ this.props.user.chargeTime)*30).toFixed(2) + " %"},
+                {key: 'Durability : '+ this.props.details.durability +" %"},
                 ]}
                 renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => { this.props.navigation.navigate('Stations')}}
+                onPress={() => { this.props.navigation.navigate('Stations',{distance :this.props.details.distance})}}
             >
             <Text style={styles.buttontext}>Stations</Text>
             </TouchableOpacity>

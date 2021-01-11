@@ -53,14 +53,14 @@ class login extends Component {
             password : "",
             battery : "",
             sincePurchase : "",
-            distTravelled :"",
-            sinceCharge :""
+            chargeTime :"",
+            dischargeTime :""
         }
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     async componentDidMount(){
-        axios.post("http://192.168.1.16:5000/users/check",{uniqueId:this.state.uniqueId})
+        axios.post("http://192.168.1.8:5000/users/check",{uniqueId:this.state.uniqueId})
         .then( res =>{
             console.log(res.data)
             if(res.data !== "Doesn't exist"){
@@ -74,7 +74,7 @@ class login extends Component {
     }
 
     onSubmit(){
-        axios.post("http://192.168.1.16:5000/users/signin",this.state)
+        axios.post("http://192.168.1.8:5000/users/signin",this.state)
         .then(res => {
             this.props.navigation.navigate('Home',{user:res.data})
         })
@@ -115,14 +115,14 @@ class login extends Component {
                     onChangeText = {(text) => {this.setState({sinceCharge:text})}}
                 />
                 <TextInput 
-                    placeholder = "Distance travelled by the vehicle"
+                    placeholder = "Charging time"
                     style = {styles.textinput}
-                    onChangeText = {(text) => {this.setState({distTravelled:text})}}
+                    onChangeText = {(text) => {this.setState({chargeTime:text})}}
                 />
                 <TextInput 
-                    placeholder = "Time taken to discharge"
+                    placeholder = "Discharging time"
                     style = {styles.textinput}
-                    onChangeText = {(text) => {this.setState({sinceCharge:text})}}
+                    onChangeText = {(text) => {this.setState({dischargeTime:text})}}
                 />
                 <TouchableOpacity
                     style={styles.button}

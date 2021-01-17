@@ -62,7 +62,6 @@ class stations extends Component {
               },()=>{
                 axios.post("http://192.168.1.8:5000/stations/showallstations")
                   .then( res =>{
-                      console.log(res.data)
                       this.setState({
                         markers : res.data
                       })
@@ -85,10 +84,8 @@ class stations extends Component {
     }
 
     neareststations(){
-      console.log(this.props.route.params.distance* 10)
       axios.post("http://192.168.1.8:5000/stations/neareststations",{coordinates:this.state.coordinates,radius:this.props.route.params.distance* 1})
         .then( res =>{
-            console.log(res.data)
             this.setState({
               markers : res.data
             })
@@ -135,7 +132,7 @@ class stations extends Component {
                       latitude: this.state.latitude,
                       longitude: this.state.longitude,
                       }}
-                    radius = {this.props.route.params.distance* 40}
+                    radius = {this.props.route.params.distance* 1000}
                     strokeWidth ={2}
                     strokeColor ={'#a2cef5'}
                 />
